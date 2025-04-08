@@ -16,7 +16,24 @@ public class DashboardStatsResponse {
     public static class DailyStats{
         private LocalDate date;
         private double averageRating;
+
+        public LocalDate getDate() {
+            return date;
+        }
+
+        public void setDate(LocalDate date) {
+            this.date = date;
+        }
+
+        public double getAverageRating() {
+            return averageRating;
+        }
+
+        public void setAverageRating(double averageRating) {
+            this.averageRating = averageRating;
+        }
     }
+
 
     public double getAverageRating() {
         return averageRating;
