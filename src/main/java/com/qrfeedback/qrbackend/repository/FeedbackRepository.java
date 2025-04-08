@@ -17,7 +17,7 @@ public interface FeedbackRepository extends JpaRepository<Feedback, UUID> {
     List<Feedback> findByQrCodeId(UUID qrId);
     List<Feedback> findBySentiment(String sentiment);
     List<Feedback> findAllByQrCodeIdInAndCreatedAtBetween(List<UUID> qrIds, LocalDateTime from, LocalDateTime to);
-    List<Feedback> findAllByQrCodeIdInAndFilters(List<UUID> qrIds, String sentiment, LocalDate fromDate, LocalDate toDate);
+//    List<Feedback> findAllByQrCodeIdInAndFilters(List<UUID> qrIds, String sentiment, LocalDate fromDate, LocalDate toDate);
     List<Feedback> findFilteredFeedback(List<UUID> qrIds, String sentiment, LocalDateTime fromDate, LocalDateTime toDate);
     @Query("SELECT f FROM Feedback f WHERE " +
             "(:qrId IS NULL OR f.qrCode.id = :qrId) AND " +
@@ -63,4 +63,10 @@ public interface FeedbackRepository extends JpaRepository<Feedback, UUID> {
     @Query("SELECT AVG(f.rating) FROM Feedback f WHERE f.qrCode.id = :qrId")
     Double findAverageRatingByQrCodeId(@Param("qrId") UUID qrId);
 
+    List<Feedback> findAllByQrCodeIdInAndSentimentAndCreatedAtBetween(
+            List<UUID> qrCodeIds,
+            String sentiment,
+            LocalDate fromDate,
+            LocalDate toDate
+    );
 }

@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.UUID;
@@ -39,7 +40,7 @@ public class AdminDashboardController {
         List<QRCode> qrCodes = qrRepo.findByAdminId(adminId);
         List<UUID> qrIds = qrCodes.stream().map(QRCode::getId).toList();
 
-        List<Feedback> feedbacks = feedbackRepository.findAllByQrCodeIdInAndFilters(qrIds,sentiment,fromDate,toDate);
+        List<Feedback> feedbacks = feedbackRepository.findAllByQrCodeIdInAndSentimentAndCreatedAtBetween(qrIds,sentiment,fromDate,toDate);
 
         DashboardStatsResponse response = DashboardUtil.aggregate(feedbacks);
         return ResponseEntity.ok(response);
