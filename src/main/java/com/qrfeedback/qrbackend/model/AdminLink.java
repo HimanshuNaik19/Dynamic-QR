@@ -15,7 +15,6 @@ import java.util.UUID;
 public class AdminLink {
 
     @Id
-    @GeneratedValue(generator = "uuid2")
     private UUID id;
 
     private String context;
@@ -23,6 +22,11 @@ public class AdminLink {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     public AdminLink() {
+    }
+
+    public AdminLink(UUID id, LocalDateTime createdAt) {
+        this.id = id;
+        this.createdAt = createdAt;
     }
 
     public AdminLink(UUID id, String context, LocalDateTime createdAt) {
