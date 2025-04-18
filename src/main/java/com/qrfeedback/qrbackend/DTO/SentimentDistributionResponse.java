@@ -2,7 +2,6 @@ package com.qrfeedback.qrbackend.DTO;
 
 import lombok.Data;
 
-@Data
 public class SentimentDistributionResponse {
     private long positive;
     private long neutral;

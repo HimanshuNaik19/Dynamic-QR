@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-@Data
+
 public class FeedbackFilterRequest {
     private UUID qrId;
     private List<String> sentiments; // "positive", "neutral", "negative"

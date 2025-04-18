@@ -2,7 +2,8 @@ package com.qrfeedback.qrbackend.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
+import org.springframework.boot.context.properties.source.ConfigurationPropertyName;
+import java.text.Normalizer;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -11,7 +12,13 @@ import java.util.UUID;
 @Data
 public class Feedback {
     @Id
+    @GeneratedValue
     private UUID id;
+
+    // This is the key part!
+    @ManyToOne
+    @JoinColumn(name = "form_id")  // must match your DB column
+    private Form form;
 
     @ManyToOne
     @JoinColumn(name = "qr_id")

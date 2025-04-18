@@ -2,7 +2,6 @@ package com.qrfeedback.qrbackend.DTO;
 
 import lombok.Data;
 
-@Data
 public class FeedbackStatsResponse {
     private long totalFeedback;
     private long positiveCount;
